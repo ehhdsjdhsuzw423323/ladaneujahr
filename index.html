@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Für dich</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000000;
+            color: #f5f5f7;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .blur-nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .apple-input {
+            background: #1c1c1e;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .apple-input:focus {
+            background: #2c2c2e;
+            border-color: #0071e3;
+            outline: none;
+        }
+
+        ::selection {
+            background: #0071e3;
+            color: white;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <section class="h-screen flex flex-col justify-center items-center px-6 relative">
+        <div class="reveal-section visible flex flex-col items-center">
+            <h1 class="text-7xl md:text-9xl font-semibold tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400">
+                2026 ✨
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 font-medium tracking-wide">Ein neues Kapitel 💞</p>
+        </div>
+        
+        <div class="absolute bottom-12 animate-bounce opacity-50">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </section>
+
+    <div class="max-w-3xl mx-auto px-6 pb-32 space-y-40">
+
+        <section class="reveal-section space-y-8 pt-20">
+            <h2 class="text-3xl md:text-5xl font-semibold tracking-tight leading-tight">
+                Frohes neues Jahr,<br><span class="text-gray-500">meine Prinzessin 👑</span>
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-300 leading-relaxed font-light">
+                Bevor wir gemeinsam nach vorne schauen, möchte ich mit dir eine kleine Zeitreise ins Jahr 2025 unternehmen, meine Lada
+            </p>
+        </section>
+
+        <section class="reveal-section grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <p class="text-sm font-semibold text-blue-500 uppercase tracking-wider mb-2">OH LADA, SCHON SO LANGE. HERZERWÄRMEND 🥰</p>
+                <h3 class="text-3xl font-bold mb-4">10. März 2025</h3>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    Seit diesem Tag schreiben wir unsere Geschichte. Fast 5000 Nachrichten, wow.
+                </p>
+            </div>
+        </section>
+
+        <section class="reveal-section">
+            <div class="bg-[#1c1c1e] rounded-3xl p-12 text-center space-y-6">
+                <div class="flex justify-center gap-4 text-5xl mb-4">
+                    <span>🌟</span><span>🧸</span>
+                </div>
+                <h3 class="text-2xl font-bold">Kleine Gesten, große Wirkung.</h3>
+                <p class="text-gray-400 max-w-lg mx-auto leading-relaxed">
+                    Vom Stern bis zum Teddybären. Aber das Wichtigste war immer die gegenseitige Unterstützung. In guten wie in schlechten Zeiten.
+                </p>
+            </div>
+        </section>
+
+        <section class="reveal-section space-y-8">
+            <div class="border-l-2 border-blue-500 pl-8 py-2">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-2">20. Dezember</h2>
+                <p class="text-xl text-gray-500">Endlich durften wir uns sehen</p>
+            </div>
+            <p class="text-xl md:text-2xl text-gray-300 leading-relaxed font-light">
+                Unser erstes Treffen. Die Umarmung. Der Blick in deine Augen. In diesem Moment blieb die Welt stehen. Auch wenn es anders gelaufen ist, als geplant 🤗🥺
+            </p>
+        </section>
+
+        <section id="gate-section" class="reveal-section py-20 text-center">
+            <h3 class="text-3xl font-semibold mb-4">Das Geschenk.</h3>
+            <p class="text-gray-400 mb-12">ERST NACH DEM GESCHENK ÖFFNEN MACHEN!!!</p>
+            
+            <div class="space-y-4">
+                <p class="text-sm font-bold tracking-widest uppercase text-red-500 mb-4">Fertig ausgepackt?</p>
+                <button onclick="showQuiz()" class="bg-white text-black hover:bg-gray-200 transition-colors px-8 py-4 rounded-full text-lg font-medium w-full md:w-auto min-w-[200px]">
+                    Ja, fortfahren
+                </button>
+            </div>
+        </section>
+
+        <section id="quiz-section" class="hidden min-h-[60vh] flex flex-col justify-center">
+            <div class="w-full max-w-md mx-auto space-y-8">
+                <div class="text-center space-y-2">
+                    <h3 class="text-2xl font-semibold">Kleine Sicherheitsfrage 😅</h3>
+                    <p class="text-gray-500">Das magst du doch, oder? Es gibt auch eine Belohnung 😉</p>
+                </div>
+
+                <div class="bg-[#1c1c1e] rounded-2xl p-6 space-y-4 font-mono text-sm md:text-base text-gray-300">
+                    <div class="flex justify-between border-b border-gray-800 pb-3">
+                        <span>🧸 + 🧸 + 🧸</span>
+                        <span class="text-white">15</span>
+                    </div>
+                    <div class="flex justify-between border-b border-gray-800 pb-3">
+                        <span>🧸 + ⭐</span>
+                        <span class="text-white">9</span>
+                    </div>
+                    <div class="flex justify-between border-b border-gray-800 pb-3">
+                        <span>⭐ - 🌹</span>
+                        <span class="text-white">1</span>
+                    </div>
+                    <div class="flex justify-between pt-2 text-blue-400 font-bold text-lg">
+                        <span>🧸 + ⭐ + 🌹</span>
+                        <span>?</span>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <input type="number" id="quiz-answer" placeholder="Ergebnis eingeben" class="apple-input w-full p-4 rounded-xl text-center text-white text-xl placeholder-gray-600">
+                    <p id="error-msg" class="text-red-500 text-sm text-center hidden">Falsche Antwort. Ich glaube an dich, Lada!</p>
+                    <button onclick="checkAnswer()" class="bg-[#0071e3] hover:bg-[#0077ED] text-white transition-colors w-full py-4 rounded-xl font-medium text-lg">
+                        Überprüfen
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div id="reward-section" class="fixed inset-0 z-50 bg-black/95 hidden flex items-center justify-center p-6 backdrop-blur-xl transition-opacity duration-500 opacity-0">
+        <div class="max-w-sm w-full space-y-8 text-center">
+            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#1c1c1e] text-4xl mb-4 shadow-lg shadow-white/5">
+                🎧
+            </div>
+            
+            <div class="space-y-2">
+                <h2 class="text-3xl font-bold tracking-tight text-white">Spotify Premium</h2>
+                <p class="text-gray-400">Viel Spaß mit deiner Musik.</p>
+            </div>
+
+            <div class="bg-[#1c1c1e] rounded-2xl overflow-hidden divide-y divide-gray-800 text-left">
+                <div class="p-5 flex justify-between items-center group cursor-pointer" onclick="copyToClipboard('ladaspotify@proton.me')">
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase font-semibold mb-1">Email</p>
+                        <p class="text-white font-mono text-sm">ladaspotify@proton.me</p>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-600 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                </div>
+                <div class="p-5 flex justify-between items-center group cursor-pointer" onclick="copyToClipboard('Emergency2020')">
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase font-semibold mb-1">Passwort</p>
+                        <p class="text-white font-mono text-lg">7D!I8E9CLH7I9</p>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-600 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                </div>
+            </div>
+
+            <p class="text-sm text-gray-600 pt-8">Ich liebe dich.</p>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed top-6 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-md border border-white/10 text-white px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none z-[100]">
+        In die Zwischenablage kopiert
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.reveal-section').forEach(el => observer.observe(el));
+        });
+
+        function showQuiz() {
+            const gate = document.getElementById('gate-section');
+            const quiz = document.getElementById('quiz-section');
+            
+            gate.style.opacity = '0';
+            setTimeout(() => {
+                gate.style.display = 'none';
+                quiz.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    quiz.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+            }, 500);
+        }
+
+        function checkAnswer() {
+            const input = document.getElementById('quiz-answer');
+            const errorMsg = document.getElementById('error-msg');
+            const val = parseInt(input.value);
+
+            if (val === 12) {
+                input.blur();
+                errorMsg.classList.add('hidden');
+                
+                confetti({
+                    particleCount: 150,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#ffffff', '#0071e3', '#64d2ff'],
+                    disableForReducedMotion: true
+                });
+
+                const reward = document.getElementById('reward-section');
+                reward.classList.remove('hidden');
+                void reward.offsetWidth; 
+                reward.style.opacity = '1';
+                
+            } else {
+                errorMsg.classList.remove('hidden');
+                input.classList.add('border-red-500', 'text-red-500');
+                setTimeout(() => input.classList.remove('border-red-500', 'text-red-500'), 1500);
+            }
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast();
+            }).catch(() => {
+                const el = document.createElement('textarea');
+                el.value = text;
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+                showToast();
+            });
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.style.opacity = '1';
+            toast.style.transform = 'translate(-50%, 0)';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translate(-50%, -10px)';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
