@@ -25,6 +25,9 @@
         
         /* Checkbox Animation */
         .check-anim { transition: all 0.2s ease-in-out; }
+
+        /* Language Toggle Animation */
+        .lang-transition { transition: all 0.3s ease; }
     </style>
 </head>
 <body class="bg-[#f8fafc] min-h-screen text-slate-800 pb-20 selection:bg-indigo-100">
@@ -32,15 +35,24 @@
     <!-- Premium Sticky Navbar -->
     <div class="sticky top-0 z-50 glass-header border-b border-slate-200 shadow-sm">
         <div class="max-w-3xl mx-auto px-5 py-3 flex justify-between items-center">
-            <div>
-                <h1 class="text-xl font-extrabold text-slate-800 tracking-tight">
+            <div class="flex-shrink-0">
+                <h1 id="main-title" class="text-xl font-extrabold text-slate-800 tracking-tight">
                     Gespräch Lada
                 </h1>
-                <p class="text-xs font-semibold text-indigo-500 uppercase tracking-wider">Donnerstag, 26.03.2026</p>
+                <p id="main-date" class="text-xs font-semibold text-indigo-500 uppercase tracking-wider">Donnerstag, 26.03.2026</p>
             </div>
-            <div class="flex gap-2">
-                <a href="#fragen" class="text-sm font-semibold bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 px-4 py-2 rounded-full shadow-sm transition-all active:scale-95">Fragen</a>
-                <a href="#loesungen" class="text-sm font-semibold bg-indigo-600 text-white hover:bg-indigo-700 px-4 py-2 rounded-full shadow-md shadow-indigo-200 transition-all active:scale-95">Lösungen</a>
+            
+            <div class="flex items-center gap-2">
+                <!-- Sprachumschalter -->
+                <button onclick="toggleLanguage()" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-full text-xs font-bold transition-all border border-slate-200 mr-2">
+                    <span id="lang-flag" class="text-base">🇺🇦</span>
+                    <span id="lang-text">UA</span>
+                </button>
+
+                <div class="hidden sm:flex gap-2">
+                    <a href="#fragen" id="nav-fragen" class="text-sm font-semibold bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 px-4 py-2 rounded-full shadow-sm transition-all active:scale-95">Fragen</a>
+                    <a href="#loesungen" id="nav-loesungen" class="text-sm font-semibold bg-indigo-600 text-white hover:bg-indigo-700 px-4 py-2 rounded-full shadow-md shadow-indigo-200 transition-all active:scale-95">Lösungen</a>
+                </div>
             </div>
         </div>
     </div>
@@ -53,14 +65,14 @@
                 <div class="p-2.5 bg-indigo-50 rounded-xl text-indigo-600 mr-3">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                 </div>
-                <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Fragen</h2>
+                <h2 id="section-fragen-title" class="text-2xl font-bold text-slate-800 tracking-tight">Fragen</h2>
             </div>
 
             <div class="space-y-6">
                 
                 <!-- Einfache Fragen (Grün) -->
                 <div>
-                    <h3 class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 ml-1">Einfache Fragen</h3>
+                    <h3 id="cat-easy" class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 ml-1">Einfache Fragen</h3>
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden divide-y divide-slate-50">
                         
                         <label class="flex items-start p-4 cursor-pointer hover:bg-emerald-50/30 transition-colors group">
@@ -68,7 +80,7 @@
                                 <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
                                 <svg class="w-4 h-4 text-emerald-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                             </div>
-                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Was ist Ihre größte Sorge bei der Fahrt zwischen Nürnberg und Neuburg an der Donau?</span>
+                            <span data-translate="q1" class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Was ist Ihre größte Sorge bei der Fahrt zwischen Nürnberg und Neuburg an der Donau?</span>
                         </label>
 
                         <label class="flex items-start p-4 cursor-pointer hover:bg-emerald-50/30 transition-colors group">
@@ -76,7 +88,7 @@
                                 <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
                                 <svg class="w-4 h-4 text-emerald-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                             </div>
-                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Was genau macht Ihnen so viele Sorgen mit Lada?</span>
+                            <span data-translate="q2" class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Was genau macht Ihnen so viele Sorgen mit Lada?</span>
                         </label>
 
                         <label class="flex items-start p-4 cursor-pointer hover:bg-emerald-50/30 transition-colors group">
@@ -84,7 +96,7 @@
                                 <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
                                 <svg class="w-4 h-4 text-emerald-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                             </div>
-                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Gibt es eine Möglichkeit dafür, Ihnen weniger Sorgen zuzubereiten bei der Fahrt?</span>
+                            <span data-translate="q3" class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Gibt es eine Möglichkeit dafür, Ihnen weniger Sorgen zuzubereiten bei der Fahrt?</span>
                         </label>
 
                         <label class="flex items-start p-4 cursor-pointer hover:bg-emerald-50/30 transition-colors group">
@@ -92,14 +104,14 @@
                                 <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
                                 <svg class="w-4 h-4 text-emerald-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                             </div>
-                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Wenn ja, wäre dann der Konflikt für Sie gelöst?</span>
+                            <span data-translate="q4" class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Wenn ja, wäre dann der Konflikt für Sie gelöst?</span>
                         </label>
                     </div>
                 </div>
 
                 <!-- Mittelmäßige Fragen (Gelb) -->
                 <div>
-                    <h3 class="text-sm font-bold text-amber-500 uppercase tracking-widest mb-3 ml-1 mt-6">Mittelmäßige Fragen</h3>
+                    <h3 id="cat-medium" class="text-sm font-bold text-amber-500 uppercase tracking-widest mb-3 ml-1 mt-6">Mittelmäßige Fragen</h3>
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden divide-y divide-slate-50">
                         
                         <label class="flex items-start p-4 cursor-pointer hover:bg-amber-50/30 transition-colors group">
@@ -107,7 +119,7 @@
                                 <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
                                 <svg class="w-4 h-4 text-amber-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                             </div>
-                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Haben Sie einen Vorschlag, wie Lada bis zu ihrem 18. Geburtstag bei Ihnen ohne Streitereien auskommen könnte?</span>
+                            <span data-translate="q5" class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Haben Sie einen Vorschlag, wie Lada bis zu ihrem 18. Geburtstag bei Ihnen ohne Streitereien auskommen könnte?</span>
                         </label>
 
                         <label class="flex items-start p-4 cursor-pointer hover:bg-amber-50/30 transition-colors group">
@@ -115,7 +127,7 @@
                                 <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
                                 <svg class="w-4 h-4 text-amber-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                             </div>
-                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Seit wann besteht der Konflikt zwischen Ihnen und Lada?</span>
+                            <span data-translate="q6" class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Seit wann besteht der Konflikt zwischen Ihnen und Lada?</span>
                         </label>
 
                         <label class="flex items-start p-4 cursor-pointer hover:bg-amber-50/30 transition-colors group bg-amber-50/10">
@@ -123,7 +135,7 @@
                                 <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
                                 <svg class="w-4 h-4 text-amber-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                             </div>
-                            <span class="text-slate-800 font-bold check-anim text-[15px] leading-relaxed">Sind Sie grundsätzlich damit einverstanden, dass Lada bei mir wohnen könnte?</span>
+                            <span data-translate="q7" class="text-slate-800 font-bold check-anim text-[15px] leading-relaxed">Sind Sie grundsätzlich damit einverstanden, dass Lada bei mir wohnen könnte?</span>
                         </label>
 
                         <label class="flex items-start p-4 cursor-pointer hover:bg-amber-50/30 transition-colors group">
@@ -131,14 +143,14 @@
                                 <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
                                 <svg class="w-4 h-4 text-amber-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                             </div>
-                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Fühlen Sie sich überlastet mit der Verantwortung, die Sie mit Lada haben?</span>
+                            <span data-translate="q8" class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Fühlen Sie sich überlastet mit der Verantwortung, die Sie mit Lada haben?</span>
                         </label>
                     </div>
                 </div>
 
                 <!-- Schwierige Fragen (Rot) -->
                 <div>
-                    <h3 class="text-sm font-bold text-rose-500 uppercase tracking-widest mb-3 ml-1 mt-6">Kritische Fragen</h3>
+                    <h3 id="cat-critical" class="text-sm font-bold text-rose-500 uppercase tracking-widest mb-3 ml-1 mt-6">Kritische Fragen</h3>
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden divide-y divide-slate-50">
                         
                         <label class="flex items-start p-4 cursor-pointer hover:bg-rose-50/30 transition-colors group">
@@ -146,7 +158,7 @@
                                 <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
                                 <svg class="w-4 h-4 text-rose-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                             </div>
-                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Sie reden davon, dass Lada nur an sich selbst denkt. Was genau meinen Sie damit?</span>
+                            <span data-translate="q9" class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Sie reden davon, dass Lada nur an sich selbst denkt. Was genau meinen Sie damit?</span>
                         </label>
 
                         <label class="flex items-start p-4 cursor-pointer hover:bg-rose-50/30 transition-colors group">
@@ -154,7 +166,7 @@
                                 <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
                                 <svg class="w-4 h-4 text-rose-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                             </div>
-                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Sie haben auf WhatsApp geschrieben, dass Sie Lada nicht mehr bei sich behalten wollen. Wie wollen wir das jetzt in der Praxis angehen?</span>
+                            <span data-translate="q10" class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Sie haben auf WhatsApp geschrieben, dass Sie Lada nicht mehr bei sich behalten wollen. Wie wollen wir das jetzt in der Praxis angehen?</span>
                         </label>
 
                         <label class="flex items-start p-4 cursor-pointer hover:bg-rose-50/30 transition-colors group bg-rose-50/10">
@@ -162,7 +174,7 @@
                                 <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
                                 <svg class="w-4 h-4 text-rose-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
                             </div>
-                            <span class="text-slate-800 font-bold check-anim text-[15px] leading-relaxed">Wieso sind Sie dann noch nicht in Kontakt mit dem Jugendamt getreten? Wo soll Lada dann hin?</span>
+                            <span data-translate="q11" class="text-slate-800 font-bold check-anim text-[15px] leading-relaxed">Wieso sind Sie dann noch nicht in Kontakt mit dem Jugendamt getreten? Wo soll Lada dann hin?</span>
                         </label>
                     </div>
                 </div>
@@ -176,7 +188,7 @@
                 <div class="p-2.5 bg-indigo-50 rounded-xl text-indigo-600 mr-3">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
-                <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Mögliche Lösungen</h2>
+                <h2 id="section-loesungen-title" class="text-2xl font-bold text-slate-800 tracking-tight">Mögliche Lösungen</h2>
             </div>
 
             <div class="space-y-4">
@@ -186,10 +198,10 @@
                     <button onclick="toggleAccordion('acc1', 'icon1')" class="w-full px-5 py-4 flex items-center justify-between bg-white hover:bg-slate-50 transition-colors focus:outline-none">
                         <div class="flex items-center">
                             <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold mr-3">1</div>
-                            <h3 class="text-[17px] font-bold text-slate-800">Lada zieht zu mir</h3>
+                            <h3 data-translate="sol1-title" class="text-[17px] font-bold text-slate-800">Lada zieht zu mir</h3>
                         </div>
                         <div class="flex items-center">
-                            <span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase mr-3">Favorit</span>
+                            <span id="badge-fav" class="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase mr-3">Favorit</span>
                             <svg id="icon1" class="w-5 h-5 text-slate-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </div>
                     </button>
@@ -197,15 +209,15 @@
                         <ul class="space-y-3 text-slate-600 font-medium">
                             <li class="flex items-start">
                                 <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
-                                <span>Aufenthalts- und Erziehungsvollmacht muss von der Tante unterschrieben werden</span>
+                                <span data-translate="sol1-p1">Aufenthalts- und Erziehungsvollmacht muss von der Tante unterschrieben werden</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
-                                <span>Keine Behörden nötig</span>
+                                <span data-translate="sol1-p2">Keine Behörden nötig</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
-                                <span>Tante behält rechtlich das letzte Wort (Klärung: Finanzen/Kindergeld?)</span>
+                                <span data-translate="sol1-p3">Tante behält rechtlich das letzte Wort (Klärung: Finanzen/Kindergeld?)</span>
                             </li>
                         </ul>
                     </div>
@@ -216,7 +228,7 @@
                     <button onclick="toggleAccordion('acc2', 'icon2')" class="w-full px-5 py-4 flex items-center justify-between bg-white hover:bg-slate-50 transition-colors focus:outline-none">
                         <div class="flex items-center">
                             <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold mr-3">2</div>
-                            <h3 class="text-[17px] font-bold text-slate-800">Es bleibt beim Alten</h3>
+                            <h3 data-translate="sol2-title" class="text-[17px] font-bold text-slate-800">Es bleibt beim Alten</h3>
                         </div>
                         <svg id="icon2" class="w-5 h-5 text-slate-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
@@ -224,15 +236,15 @@
                         <ul class="space-y-3 text-slate-600 font-medium">
                             <li class="flex items-start">
                                 <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-400 flex-shrink-0"></span>
-                                <span>Lada bleibt in Neuburg wohnen</span>
+                                <span data-translate="sol2-p1">Lada bleibt in Neuburg wohnen</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-600 flex-shrink-0"></span>
-                                <span class="font-bold text-indigo-900">VORAUSSETZUNG: Lada wird nicht in unnötige Streitigkeiten verwickelt</span>
+                                <span data-translate="sol2-p2" class="font-bold text-indigo-900">VORAUSSETZUNG: Lada wird nicht in unnötige Streitigkeiten verwickelt</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-600 flex-shrink-0"></span>
-                                <span class="font-bold text-indigo-900">VORAUSSETZUNG: Lada kann jederzeit ohne Diskussion zu mir</span>
+                                <span data-translate="sol2-p3" class="font-bold text-indigo-900">VORAUSSETZUNG: Lada kann jederzeit ohne Diskussion zu mir</span>
                             </li>
                         </ul>
                     </div>
@@ -243,7 +255,7 @@
                     <button onclick="toggleAccordion('acc3', 'icon3')" class="w-full px-5 py-4 flex items-center justify-between bg-white hover:bg-slate-50 transition-colors focus:outline-none">
                         <div class="flex items-center">
                             <div class="w-8 h-8 rounded-full bg-slate-800 text-white flex items-center justify-center font-bold mr-3">3</div>
-                            <h3 class="text-[17px] font-bold text-slate-800">Jugendamt (Plan B)</h3>
+                            <h3 data-translate="sol3-title" class="text-[17px] font-bold text-slate-800">Jugendamt (Plan B)</h3>
                         </div>
                         <svg id="icon3" class="w-5 h-5 text-slate-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
@@ -251,19 +263,19 @@
                         <ul class="space-y-3 text-slate-600 font-medium">
                             <li class="flex items-start">
                                 <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
-                                <span>Argument “Gefährdung des Kindeswohls”</span>
+                                <span data-translate="sol3-p1">Argument “Gefährdung des Kindeswohls”</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
-                                <span>Beweise vorlegen (Chatverläufe & Audio)</span>
+                                <span data-translate="sol3-p2">Beweise vorlegen (Chatverläufe & Audio)</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
-                                <span>Finanzen werden durch das Amt geregelt</span>
+                                <span data-translate="sol3-p3">Finanzen werden durch das Amt geregelt</span>
                             </li>
                             <li class="flex items-start mt-4 pt-4 border-t border-slate-100">
                                 <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0"></span>
-                                <span class="italic text-slate-500 text-sm">Hinweis: Nicht zu 100% sicher, ob Lada dann sofort zu mir darf (Prüfung durch Amt nötig)</span>
+                                <span data-translate="sol3-p4" class="italic text-slate-500 text-sm">Hinweis: Nicht zu 100% sicher, ob Lada dann sofort zu mir darf (Prüfung durch Amt nötig)</span>
                             </li>
                         </ul>
                     </div>
@@ -274,8 +286,116 @@
 
     </div>
 
-    <!-- JavaScript für Interaktivität -->
+    <!-- JavaScript für Interaktivität und Übersetzung -->
     <script>
+        let currentLang = 'de';
+
+        const translations = {
+            de: {
+                title: "Gespräch Lada",
+                date: "Donnerstag, 26.03.2026",
+                navFragen: "Fragen",
+                navLoesungen: "Lösungen",
+                secFragen: "Fragen",
+                catEasy: "Einfache Fragen",
+                catMedium: "Mittelmäßige Fragen",
+                catCritical: "Kritische Fragen",
+                secLoesungen: "Mögliche Lösungen",
+                badgeFav: "Favorit",
+                flag: "🇺🇦",
+                langBtn: "UA",
+                q1: "Was ist Ihre größte Sorge bei der Fahrt zwischen Nürnberg und Neuburg an der Donau?",
+                q2: "Was genau macht Ihnen so viele Sorgen mit Lada?",
+                q3: "Gibt es eine Möglichkeit dafür, Ihnen weniger Sorgen zuzubereiten bei der Fahrt?",
+                q4: "Wenn ja, wäre dann der Konflikt für Sie gelöst?",
+                q5: "Haben Sie einen Vorschlag, wie Lada bis zu ihrem 18. Geburtstag bei Ihnen ohne Streitereien auskommen könnte?",
+                q6: "Seit wann besteht der Konflikt zwischen Ihnen und Lada?",
+                q7: "Sind Sie grundsätzlich damit einverstanden, dass Lada bei mir wohnen könnte?",
+                q8: "Fühlen Sie sich überlastet mit der Verantwortung, die Sie mit Lada haben?",
+                q9: "Sie reden davon, dass Lada nur an sich selbst denkt. Was genau meinen Sie damit?",
+                q10: "Sie haben auf WhatsApp geschrieben, dass Sie Lada nicht mehr bei sich behalten wollen. Wie wollen wir das jetzt in der Praxis angehen?",
+                q11: "Wieso sind Sie dann noch nicht in Kontakt mit dem Jugendamt getreten? Wo soll Lada dann hin?",
+                "sol1-title": "Lada zieht zu mir",
+                "sol1-p1": "Aufenthalts- und Erziehungsvollmacht muss von der Tante unterschrieben werden",
+                "sol1-p2": "Keine Behörden nötig",
+                "sol1-p3": "Tante behält rechtlich das letzte Wort (Klärung: Finanzen/Kindergeld?)",
+                "sol2-title": "Es bleibt beim Alten",
+                "sol2-p1": "Lada bleibt in Neuburg wohnen",
+                "sol2-p2": "VORAUSSETZUNG: Lada wird nicht in unnötige Streitigkeiten verwickelt",
+                "sol2-p3": "VORAUSSETZUNG: Lada kann jederzeit ohne Diskussion zu mir",
+                "sol3-title": "Jugendamt (Plan B)",
+                "sol3-p1": "Argument „Gefährdung des Kindeswohls“",
+                "sol3-p2": "Beweise vorlegen (Chatverläufe & Audio)",
+                "sol3-p3": "Finanzen werden durch das Amt geregelt",
+                "sol3-p4": "Hinweis: Nicht zu 100% sicher, ob Lada dann sofort zu mir darf (Prüfung durch Amt nötig)"
+            },
+            ua: {
+                title: "Розмова Лада",
+                date: "Четвер, 26.03.2026",
+                navFragen: "Питання",
+                navLoesungen: "Рішення",
+                secFragen: "Питання",
+                catEasy: "Прості питання",
+                catMedium: "Середні питання",
+                catCritical: "Критичні питання",
+                secLoesungen: "Можливі рішення",
+                badgeFav: "Фаворит",
+                flag: "🇩🇪",
+                langBtn: "DE",
+                q1: "Що вас найбільше хвилює під час поїздки між Нюрнбергом та Нойбургом-на-Дунаї?",
+                q2: "Що саме викликає у вас стільки занепокоєння щодо Лади?",
+                q3: "Чи є спосіб зменшити ваші переживання під час поїздки?",
+                q4: "Якщо так, чи буде тоді конфлікт для вас вичерпаний?",
+                q5: "Чи маєте ви пропозицію, як Лада могла б жити з вами без сварок до її 18-річчя?",
+                q6: "Відколи триває конфлікт між вами та Ладою?",
+                q7: "Чи згодні ви в принципі з тим, що Лада могла б жити зі мною?",
+                q8: "Чи відчуваєте ви перевантаження відповідальністю за Ладу?",
+                q9: "Ви кажете, що Лада думає тільки про себе. Що саме ви маєте на увазі?",
+                q10: "Ви писали у WhatsApp, що більше не хочете тримати Ладу в себе. Як ми будемо вирішувати це на практиці?",
+                q11: "Чому ви досі не звернулися до служби у справах дітей (Jugendamt)? Куди тоді має піти Лада?",
+                "sol1-title": "Лада переїжджає до мене",
+                "sol1-p1": "Тітка повинна підписати довіреність на проживання та виховання",
+                "sol1-p2": "Державні органи не потрібні",
+                "sol1-p3": "Тітка юридично залишає за собою останнє слово (уточнення: фінанси/допомога на дитину?)",
+                "sol2-title": "Все залишається як було",
+                "sol2-p1": "Лада залишається жити в Нойбурзі",
+                "sol2-p2": "УМОВА: Лада не втягується в непотрібні сварки",
+                "sol2-p3": "УМОВА: Лада може прийти до мене в будь-який час без дискусій",
+                "sol3-title": "Служба у справах дітей (План Б)",
+                "sol3-p1": "Аргумент «Загроза добробуту дитини»",
+                "sol3-p2": "Надання доказів (чати та аудіо)",
+                "sol3-p3": "Фінанси регулюються службою",
+                "sol3-p4": "Примітка: Немає 100% впевненості, чи дозволять Ладі одразу переїхати до мене (потрібна перевірка служби)"
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'de' ? 'ua' : 'de';
+            const dict = translations[currentLang];
+
+            // UI Elements
+            document.getElementById('main-title').textContent = dict.title;
+            document.getElementById('main-date').textContent = dict.date;
+            document.getElementById('nav-fragen').textContent = dict.navFragen;
+            document.getElementById('nav-loesungen').textContent = dict.navLoesungen;
+            document.getElementById('lang-flag').textContent = dict.flag;
+            document.getElementById('lang-text').textContent = dict.langBtn;
+            document.getElementById('section-fragen-title').textContent = dict.secFragen;
+            document.getElementById('section-loesungen-title').textContent = dict.secLoesungen;
+            document.getElementById('cat-easy').textContent = dict.catEasy;
+            document.getElementById('cat-medium').textContent = dict.catMedium;
+            document.getElementById('cat-critical').textContent = dict.catCritical;
+            document.getElementById('badge-fav').textContent = dict.badgeFav;
+
+            // Translatable Text with data attributes
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (dict[key]) {
+                    el.textContent = dict[key];
+                }
+            });
+        }
+
         // Funktion zum Durchstreichen der Fragen
         function toggleStyle(checkbox) {
             const textSpan = checkbox.parentElement.nextElementSibling;
@@ -284,7 +404,6 @@
                 textSpan.classList.remove('text-slate-700', 'text-slate-800');
             } else {
                 textSpan.classList.remove('line-through', 'text-slate-400');
-                // Wenn es eine "fette" Frage ist, bekommt sie text-slate-800 zurück, sonst text-slate-700
                 if(textSpan.classList.contains('font-bold')) {
                     textSpan.classList.add('text-slate-800');
                 } else {
