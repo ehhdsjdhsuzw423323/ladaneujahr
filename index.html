@@ -1,275 +1,310 @@
 <!DOCTYPE html>
-<html lang="de" class="scroll-smooth">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Für dich</title>
+    <title>Gesprächsleitfaden 26.03.2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #000000;
-            color: #f5f5f7;
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
         
-        .reveal-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .blur-nav {
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-
-        .apple-input {
-            background: #1c1c1e;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-        }
-        .apple-input:focus {
-            background: #2c2c2e;
-            border-color: #0071e3;
-            outline: none;
-        }
-
-        ::selection {
-            background: #0071e3;
-            color: white;
-        }
+        /* Checkbox Animation */
+        .check-anim { transition: all 0.2s ease-in-out; }
     </style>
 </head>
-<body class="min-h-screen">
+<body class="bg-[#f8fafc] min-h-screen text-slate-800 pb-20 selection:bg-indigo-100">
 
-    <section class="h-screen flex flex-col justify-center items-center px-6 relative">
-        <div class="reveal-section visible flex flex-col items-center">
-            <h1 class="text-7xl md:text-9xl font-semibold tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400">
-                2026 ✨
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-400 font-medium tracking-wide">Ein neues Kapitel 💞</p>
-        </div>
-        
-        <div class="absolute bottom-12 animate-bounce opacity-50">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-        </div>
-    </section>
-
-    <div class="max-w-3xl mx-auto px-6 pb-32 space-y-40">
-
-        <section class="reveal-section space-y-8 pt-20">
-            <h2 class="text-3xl md:text-5xl font-semibold tracking-tight leading-tight">
-                Frohes neues Jahr,<br><span class="text-gray-500">meine Prinzessin 👑</span>
-            </h2>
-            <p class="text-xl md:text-2xl text-gray-300 leading-relaxed font-light">
-                Bevor wir gemeinsam nach vorne schauen, möchte ich mit dir eine kleine Zeitreise ins Jahr 2025 unternehmen, meine Lada
-            </p>
-        </section>
-
-        <section class="reveal-section grid md:grid-cols-2 gap-12 items-center">
+    <!-- Premium Sticky Navbar -->
+    <div class="sticky top-0 z-50 glass-header border-b border-slate-200 shadow-sm">
+        <div class="max-w-3xl mx-auto px-5 py-3 flex justify-between items-center">
             <div>
-                <p class="text-sm font-semibold text-blue-500 uppercase tracking-wider mb-2">OH LADA, SCHON SO LANGE. HERZERWÄRMEND 🥰</p>
-                <h3 class="text-3xl font-bold mb-4">10. März 2025</h3>
-                <p class="text-gray-400 text-lg leading-relaxed">
-                    Seit diesem Tag schreiben wir unsere Geschichte. Fast 5000 Nachrichten, wow.
-                </p>
+                <h1 class="text-xl font-extrabold text-slate-800 tracking-tight">
+                    Gespräch Lada
+                </h1>
+                <p class="text-xs font-semibold text-indigo-500 uppercase tracking-wider">Donnerstag, 26.03.2026</p>
             </div>
-        </section>
-
-        <section class="reveal-section">
-            <div class="bg-[#1c1c1e] rounded-3xl p-12 text-center space-y-6">
-                <div class="flex justify-center gap-4 text-5xl mb-4">
-                    <span>🌟</span><span>🧸</span>
-                </div>
-                <h3 class="text-2xl font-bold">Kleine Gesten, große Wirkung.</h3>
-                <p class="text-gray-400 max-w-lg mx-auto leading-relaxed">
-                    Vom Stern bis zum Teddybären. Aber das Wichtigste war immer die gegenseitige Unterstützung. In guten wie in schlechten Zeiten.
-                </p>
+            <div class="flex gap-2">
+                <a href="#fragen" class="text-sm font-semibold bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 px-4 py-2 rounded-full shadow-sm transition-all active:scale-95">Fragen</a>
+                <a href="#loesungen" class="text-sm font-semibold bg-indigo-600 text-white hover:bg-indigo-700 px-4 py-2 rounded-full shadow-md shadow-indigo-200 transition-all active:scale-95">Lösungen</a>
             </div>
-        </section>
-
-        <section class="reveal-section space-y-8">
-            <div class="border-l-2 border-blue-500 pl-8 py-2">
-                <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-2">20. Dezember</h2>
-                <p class="text-xl text-gray-500">Endlich durften wir uns sehen</p>
-            </div>
-            <p class="text-xl md:text-2xl text-gray-300 leading-relaxed font-light">
-                Unser erstes Treffen. Die Umarmung. Der Blick in deine Augen. In diesem Moment blieb die Welt stehen. Auch wenn es anders gelaufen ist, als geplant 🤗🥺
-            </p>
-        </section>
-
-        <section id="gate-section" class="reveal-section py-20 text-center">
-            <h3 class="text-3xl font-semibold mb-4">Das Geschenk.</h3>
-            <p class="text-gray-400 mb-12">ERST NACH DEM GESCHENK ÖFFNEN MACHEN!!!</p>
-            
-            <div class="space-y-4">
-                <p class="text-sm font-bold tracking-widest uppercase text-red-500 mb-4">Fertig ausgepackt?</p>
-                <button onclick="showQuiz()" class="bg-white text-black hover:bg-gray-200 transition-colors px-8 py-4 rounded-full text-lg font-medium w-full md:w-auto min-w-[200px]">
-                    Ja, fortfahren
-                </button>
-            </div>
-        </section>
-
-        <section id="quiz-section" class="hidden min-h-[60vh] flex flex-col justify-center">
-            <div class="w-full max-w-md mx-auto space-y-8">
-                <div class="text-center space-y-2">
-                    <h3 class="text-2xl font-semibold">Kleine Sicherheitsfrage 😅</h3>
-                    <p class="text-gray-500">Das magst du doch, oder? Es gibt auch eine Belohnung 😉</p>
-                </div>
-
-                <div class="bg-[#1c1c1e] rounded-2xl p-6 space-y-4 font-mono text-sm md:text-base text-gray-300">
-                    <div class="flex justify-between border-b border-gray-800 pb-3">
-                        <span>🧸 + 🧸 + 🧸</span>
-                        <span class="text-white">15</span>
-                    </div>
-                    <div class="flex justify-between border-b border-gray-800 pb-3">
-                        <span>🧸 + ⭐</span>
-                        <span class="text-white">9</span>
-                    </div>
-                    <div class="flex justify-between border-b border-gray-800 pb-3">
-                        <span>⭐ - 🌹</span>
-                        <span class="text-white">1</span>
-                    </div>
-                    <div class="flex justify-between pt-2 text-blue-400 font-bold text-lg">
-                        <span>🧸 + ⭐ + 🌹</span>
-                        <span>?</span>
-                    </div>
-                </div>
-
-                <div class="space-y-4">
-                    <input type="number" id="quiz-answer" placeholder="Ergebnis eingeben" class="apple-input w-full p-4 rounded-xl text-center text-white text-xl placeholder-gray-600">
-                    <p id="error-msg" class="text-red-500 text-sm text-center hidden">Falsche Antwort. Ich glaube an dich, Lada!</p>
-                    <button onclick="checkAnswer()" class="bg-[#0071e3] hover:bg-[#0077ED] text-white transition-colors w-full py-4 rounded-xl font-medium text-lg">
-                        Überprüfen
-                    </button>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <div id="reward-section" class="fixed inset-0 z-50 bg-black/95 hidden flex items-center justify-center p-6 backdrop-blur-xl transition-opacity duration-500 opacity-0">
-        <div class="max-w-sm w-full space-y-8 text-center">
-            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#1c1c1e] text-4xl mb-4 shadow-lg shadow-white/5">
-                🎧
-            </div>
-            
-            <div class="space-y-2">
-                <h2 class="text-3xl font-bold tracking-tight text-white">Spotify Premium</h2>
-                <p class="text-gray-400">Viel Spaß mit deiner Musik.</p>
-            </div>
-
-            <div class="bg-[#1c1c1e] rounded-2xl overflow-hidden divide-y divide-gray-800 text-left">
-                <div class="p-5 flex justify-between items-center group cursor-pointer" onclick="copyToClipboard('ladaspotify@proton.me')">
-                    <div>
-                        <p class="text-xs text-gray-500 uppercase font-semibold mb-1">Email</p>
-                        <p class="text-white font-mono text-sm">ladaspotify@proton.me</p>
-                    </div>
-                    <svg class="w-5 h-5 text-gray-600 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                </div>
-                <div class="p-5 flex justify-between items-center group cursor-pointer" onclick="copyToClipboard('Emergency2020')">
-                    <div>
-                        <p class="text-xs text-gray-500 uppercase font-semibold mb-1">Passwort</p>
-                        <p class="text-white font-mono text-lg">7D!I8E9CLH7I9</p>
-                    </div>
-                    <svg class="w-5 h-5 text-gray-600 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                </div>
-            </div>
-
-            <p class="text-sm text-gray-600 pt-8">Ich liebe dich.</p>
         </div>
     </div>
 
-    <div id="toast" class="fixed top-6 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-md border border-white/10 text-white px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 opacity-0 -translate-y-4 pointer-events-none z-[100]">
-        In die Zwischenablage kopiert
+    <div class="max-w-3xl mx-auto px-5 mt-8 space-y-10">
+        
+        <!-- FRAGEN BEREICH -->
+        <section id="fragen" class="scroll-mt-24">
+            <div class="flex items-center mb-6">
+                <div class="p-2.5 bg-indigo-50 rounded-xl text-indigo-600 mr-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Meine Fragen</h2>
+            </div>
+
+            <div class="space-y-6">
+                
+                <!-- Einfache Fragen (Grün) -->
+                <div>
+                    <h3 class="text-sm font-bold text-emerald-600 uppercase tracking-widest mb-3 ml-1">Einstieg & Deeskalation</h3>
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden divide-y divide-slate-50">
+                        
+                        <label class="flex items-start p-4 cursor-pointer hover:bg-emerald-50/30 transition-colors group">
+                            <div class="relative flex items-center justify-center w-6 h-6 mt-0.5 mr-4 border-2 border-emerald-400 rounded-md bg-white group-hover:border-emerald-500 transition-colors flex-shrink-0">
+                                <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
+                                <svg class="w-4 h-4 text-emerald-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Was ist Ihre größte Sorge bei der Fahrt zwischen Nürnberg und Neuburg an der Donau?</span>
+                        </label>
+
+                        <label class="flex items-start p-4 cursor-pointer hover:bg-emerald-50/30 transition-colors group">
+                            <div class="relative flex items-center justify-center w-6 h-6 mt-0.5 mr-4 border-2 border-emerald-400 rounded-md bg-white group-hover:border-emerald-500 transition-colors flex-shrink-0">
+                                <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
+                                <svg class="w-4 h-4 text-emerald-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Was genau macht Ihnen so viele Sorgen mit Lada?</span>
+                        </label>
+
+                        <label class="flex items-start p-4 cursor-pointer hover:bg-emerald-50/30 transition-colors group">
+                            <div class="relative flex items-center justify-center w-6 h-6 mt-0.5 mr-4 border-2 border-emerald-400 rounded-md bg-white group-hover:border-emerald-500 transition-colors flex-shrink-0">
+                                <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
+                                <svg class="w-4 h-4 text-emerald-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Gibt es eine Möglichkeit dafür, Ihnen weniger Sorgen zuzubereiten bei der Fahrt?</span>
+                        </label>
+
+                        <label class="flex items-start p-4 cursor-pointer hover:bg-emerald-50/30 transition-colors group">
+                            <div class="relative flex items-center justify-center w-6 h-6 mt-0.5 mr-4 border-2 border-emerald-400 rounded-md bg-white group-hover:border-emerald-500 transition-colors flex-shrink-0">
+                                <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
+                                <svg class="w-4 h-4 text-emerald-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Wenn ja, wäre dann der Konflikt für Sie gelöst?</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Mittelmäßige Fragen (Gelb) -->
+                <div>
+                    <h3 class="text-sm font-bold text-amber-500 uppercase tracking-widest mb-3 ml-1 mt-6">Analytisch & Konkret</h3>
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden divide-y divide-slate-50">
+                        
+                        <label class="flex items-start p-4 cursor-pointer hover:bg-amber-50/30 transition-colors group">
+                            <div class="relative flex items-center justify-center w-6 h-6 mt-0.5 mr-4 border-2 border-amber-400 rounded-md bg-white group-hover:border-amber-500 transition-colors flex-shrink-0">
+                                <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
+                                <svg class="w-4 h-4 text-amber-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Haben Sie einen Vorschlag, wie Lada bis zu ihrem 18. Geburtstag bei Ihnen ohne Streitereien auskommen könnte?</span>
+                        </label>
+
+                        <label class="flex items-start p-4 cursor-pointer hover:bg-amber-50/30 transition-colors group">
+                            <div class="relative flex items-center justify-center w-6 h-6 mt-0.5 mr-4 border-2 border-amber-400 rounded-md bg-white group-hover:border-amber-500 transition-colors flex-shrink-0">
+                                <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
+                                <svg class="w-4 h-4 text-amber-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Seit wann besteht der Konflikt zwischen Ihnen und Lada?</span>
+                        </label>
+
+                        <label class="flex items-start p-4 cursor-pointer hover:bg-amber-50/30 transition-colors group bg-amber-50/10">
+                            <div class="relative flex items-center justify-center w-6 h-6 mt-0.5 mr-4 border-2 border-amber-500 rounded-md bg-white transition-colors flex-shrink-0">
+                                <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
+                                <svg class="w-4 h-4 text-amber-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-slate-800 font-bold check-anim text-[15px] leading-relaxed">Sind Sie grundsätzlich damit einverstanden, dass Lada bei mir wohnen könnte?</span>
+                        </label>
+
+                        <label class="flex items-start p-4 cursor-pointer hover:bg-amber-50/30 transition-colors group">
+                            <div class="relative flex items-center justify-center w-6 h-6 mt-0.5 mr-4 border-2 border-amber-400 rounded-md bg-white group-hover:border-amber-500 transition-colors flex-shrink-0">
+                                <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
+                                <svg class="w-4 h-4 text-amber-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Fühlen Sie sich überlastet mit der Verantwortung, die Sie mit Lada haben?</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Schwierige Fragen (Rot) -->
+                <div>
+                    <h3 class="text-sm font-bold text-rose-500 uppercase tracking-widest mb-3 ml-1 mt-6">Kritisch (Vorsicht!)</h3>
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden divide-y divide-slate-50">
+                        
+                        <label class="flex items-start p-4 cursor-pointer hover:bg-rose-50/30 transition-colors group">
+                            <div class="relative flex items-center justify-center w-6 h-6 mt-0.5 mr-4 border-2 border-rose-400 rounded-md bg-white group-hover:border-rose-500 transition-colors flex-shrink-0">
+                                <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
+                                <svg class="w-4 h-4 text-rose-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Sie reden davon, dass Lada nur an sich selbst denkt. Was genau meinen Sie damit?</span>
+                        </label>
+
+                        <label class="flex items-start p-4 cursor-pointer hover:bg-rose-50/30 transition-colors group">
+                            <div class="relative flex items-center justify-center w-6 h-6 mt-0.5 mr-4 border-2 border-rose-400 rounded-md bg-white group-hover:border-rose-500 transition-colors flex-shrink-0">
+                                <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
+                                <svg class="w-4 h-4 text-rose-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-slate-700 font-medium check-anim text-[15px] leading-relaxed">Sie haben auf WhatsApp geschrieben, dass Sie Lada nicht mehr bei sich behalten wollen. Wie wollen wir das jetzt in der Praxis angehen?</span>
+                        </label>
+
+                        <label class="flex items-start p-4 cursor-pointer hover:bg-rose-50/30 transition-colors group bg-rose-50/10">
+                            <div class="relative flex items-center justify-center w-6 h-6 mt-0.5 mr-4 border-2 border-rose-500 rounded-md bg-white transition-colors flex-shrink-0">
+                                <input type="checkbox" class="peer sr-only" onchange="toggleStyle(this)">
+                                <svg class="w-4 h-4 text-rose-500 opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-slate-800 font-bold check-anim text-[15px] leading-relaxed">Wieso sind Sie dann noch nicht in Kontakt mit dem Jugendamt getreten? Wo soll Lada dann hin?</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- LÖSUNGEN BEREICH -->
+        <section id="loesungen" class="scroll-mt-24 pt-4">
+            <div class="flex items-center mb-6">
+                <div class="p-2.5 bg-indigo-50 rounded-xl text-indigo-600 mr-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Mögliche Lösungen</h2>
+            </div>
+
+            <div class="space-y-4">
+                
+                <!-- Lösung 1 (Aufklappbar) -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <button onclick="toggleAccordion('acc1', 'icon1')" class="w-full px-5 py-4 flex items-center justify-between bg-white hover:bg-slate-50 transition-colors focus:outline-none">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold mr-3">1</div>
+                            <h3 class="text-[17px] font-bold text-slate-800">Lada zieht zu mir</h3>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-bold uppercase mr-3">Favorit</span>
+                            <svg id="icon1" class="w-5 h-5 text-slate-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </button>
+                    <div id="acc1" class="hidden px-5 pb-5 pt-2 bg-white">
+                        <ul class="space-y-3 text-slate-600 font-medium">
+                            <li class="flex items-start">
+                                <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+                                <span>Aufenthalts- und Erziehungsvollmacht muss von der Tante unterschrieben werden</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+                                <span>Keine Behörden nötig</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+                                <span>Tante behält rechtlich das letzte Wort (Klärung: Finanzen/Kindergeld?)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Lösung 2 (Aufklappbar) -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <button onclick="toggleAccordion('acc2', 'icon2')" class="w-full px-5 py-4 flex items-center justify-between bg-white hover:bg-slate-50 transition-colors focus:outline-none">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold mr-3">2</div>
+                            <h3 class="text-[17px] font-bold text-slate-800">Es bleibt beim Alten</h3>
+                        </div>
+                        <svg id="icon2" class="w-5 h-5 text-slate-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="acc2" class="hidden px-5 pb-5 pt-2 bg-white">
+                        <ul class="space-y-3 text-slate-600 font-medium">
+                            <li class="flex items-start">
+                                <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-400 flex-shrink-0"></span>
+                                <span>Lada bleibt in Neuburg wohnen</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-600 flex-shrink-0"></span>
+                                <span class="font-bold text-indigo-900">VORAUSSETZUNG: Lada wird nicht in unnötige Streitigkeiten verwickelt</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-600 flex-shrink-0"></span>
+                                <span class="font-bold text-indigo-900">VORAUSSETZUNG: Lada kann jederzeit ohne Diskussion zu mir</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Lösung 3 (Aufklappbar) -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <button onclick="toggleAccordion('acc3', 'icon3')" class="w-full px-5 py-4 flex items-center justify-between bg-white hover:bg-slate-50 transition-colors focus:outline-none">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-slate-800 text-white flex items-center justify-center font-bold mr-3">3</div>
+                            <h3 class="text-[17px] font-bold text-slate-800">Jugendamt (Plan B)</h3>
+                        </div>
+                        <svg id="icon3" class="w-5 h-5 text-slate-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="acc3" class="hidden px-5 pb-5 pt-2 bg-white">
+                        <ul class="space-y-3 text-slate-600 font-medium">
+                            <li class="flex items-start">
+                                <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
+                                <span>Argument “Gefährdung des Kindeswohls”</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
+                                <span>Beweise vorlegen (Chatverläufe & Audio)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0"></span>
+                                <span>Finanzen werden durch das Amt geregelt</span>
+                            </li>
+                            <li class="flex items-start mt-4 pt-4 border-t border-slate-100">
+                                <span class="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0"></span>
+                                <span class="italic text-slate-500 text-sm">Hinweis: Nicht zu 100% sicher, ob Lada dann sofort zu mir darf (Prüfung durch Amt nötig)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
     </div>
 
+    <!-- JavaScript für Interaktivität -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.15 });
-
-            document.querySelectorAll('.reveal-section').forEach(el => observer.observe(el));
-        });
-
-        function showQuiz() {
-            const gate = document.getElementById('gate-section');
-            const quiz = document.getElementById('quiz-section');
-            
-            gate.style.opacity = '0';
-            setTimeout(() => {
-                gate.style.display = 'none';
-                quiz.classList.remove('hidden');
-                requestAnimationFrame(() => {
-                    quiz.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                });
-            }, 500);
-        }
-
-        function checkAnswer() {
-            const input = document.getElementById('quiz-answer');
-            const errorMsg = document.getElementById('error-msg');
-            const val = parseInt(input.value);
-
-            if (val === 12) {
-                input.blur();
-                errorMsg.classList.add('hidden');
-                
-                confetti({
-                    particleCount: 150,
-                    spread: 70,
-                    origin: { y: 0.6 },
-                    colors: ['#ffffff', '#0071e3', '#64d2ff'],
-                    disableForReducedMotion: true
-                });
-
-                const reward = document.getElementById('reward-section');
-                reward.classList.remove('hidden');
-                void reward.offsetWidth; 
-                reward.style.opacity = '1';
-                
+        // Funktion zum Durchstreichen der Fragen
+        function toggleStyle(checkbox) {
+            const textSpan = checkbox.parentElement.nextElementSibling;
+            if (checkbox.checked) {
+                textSpan.classList.add('line-through', 'text-slate-400');
+                textSpan.classList.remove('text-slate-700', 'text-slate-800');
             } else {
-                errorMsg.classList.remove('hidden');
-                input.classList.add('border-red-500', 'text-red-500');
-                setTimeout(() => input.classList.remove('border-red-500', 'text-red-500'), 1500);
+                textSpan.classList.remove('line-through', 'text-slate-400');
+                // Wenn es eine "fette" Frage ist, bekommt sie text-slate-800 zurück, sonst text-slate-700
+                if(textSpan.classList.contains('font-bold')) {
+                    textSpan.classList.add('text-slate-800');
+                } else {
+                    textSpan.classList.add('text-slate-700');
+                }
             }
         }
 
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                showToast();
-            }).catch(() => {
-                const el = document.createElement('textarea');
-                el.value = text;
-                document.body.appendChild(el);
-                el.select();
-                document.execCommand('copy');
-                document.body.removeChild(el);
-                showToast();
-            });
-        }
-
-        function showToast() {
-            const toast = document.getElementById('toast');
-            toast.style.opacity = '1';
-            toast.style.transform = 'translate(-50%, 0)';
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translate(-50%, -10px)';
-            }, 2000);
+        // Funktion für die aufklappbaren Lösungen (Akkordeon)
+        function toggleAccordion(contentId, iconId) {
+            const content = document.getElementById(contentId);
+            const icon = document.getElementById(iconId);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
         }
     </script>
 </body>
